@@ -18,6 +18,7 @@
                         accent: '#0FC6C2',
                         neutral: '#F5F7FA',
                         dark: '#1D2129',
+                        mha: '#FF7D00',
                     },
                     fontFamily: {
                         inter: ['Inter', 'sans-serif'],
@@ -112,8 +113,8 @@
                                 <h3 class="text-xl font-semibold mb-2">20+年历程</h3>
                                 <p class="text-dark/70">从2002年首次提出到如今的广泛应用</p>
                             </div>
-                            <div class="flex flex-col items-center text-center p-6 rounded-xl bg-neutral">
-                                <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                            <div class="flex flex-col items-center text-center p-6 rounded-xl bg-secondary/10">
+                                <div class="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mb-4">
                                     <i class="fa fa-file-text-o text-secondary text-2xl"></i>
                                 </div>
                                 <h3 class="text-xl font-semibold mb-2">500+论文</h3>
@@ -396,7 +397,7 @@
                 </div>
                 
                 <!-- 时间点7 -->
-                <div class="ml-16 relative">
+                <div class="mb-12 ml-16 relative">
                     <div class="timeline-dot" style="top: 10px;"></div>
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 card-hover">
                         <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
@@ -421,6 +422,33 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- 时间点8 -->
+                <div class="ml-16 relative">
+                    <div class="timeline-dot" style="top: 10px; background-color: #FF7D00;"></div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 card-hover">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold">2023年：多头隐注意力机制(MHA)</h3>
+                            <span class="inline-block px-3 py-1 rounded-full bg-mha/10 text-mha text-sm font-medium mt-2 md:mt-0">
+                                架构创新
+                            </span>
+                        </div>
+                        <p class="text-dark/70 mb-4">
+                            DeepSeek团队提出多头隐注意力机制(MHA)，通过引入隐藏表示空间，增强了模型捕捉复杂语义关系的能力。MHA在保持高效计算的同时，显著提升了模型的表达能力。
+                        </p>
+                        <div class="flex flex-wrap gap-3 mt-4">
+                            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-dark/70">
+                                多头隐注意力
+                            </span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-dark/70">
+                                隐藏表示空间
+                            </span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-dark/70">
+                                DeepSeek
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -438,7 +466,7 @@
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- FlashAttention -->
                 <div class="bg-white rounded-xl shadow-xl p-8 card-hover">
                     <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
@@ -553,6 +581,101 @@ class GatedMLP(nn.Module):
                         </div>
                     </div>
                 </div>
+                
+                <!-- MHA -->
+                <div class="bg-white rounded-xl shadow-xl p-8 card-hover">
+                    <div class="w-16 h-16 rounded-full bg-mha/10 flex items-center justify-center mb-6">
+                        <i class="fa fa-cubes text-mha text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">多头隐注意力机制(MHA)</h3>
+                    <p class="text-dark/70 mb-6">
+                        多头隐注意力机制(Multihead Hidden Attention)是DeepSeek团队提出的创新注意力架构，通过引入隐藏表示空间，增强了模型捕捉复杂语义关系的能力。MHA在保持高效计算的同时，显著提升了模型的表达能力。
+                    </p>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-3">核心原理</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-mha mt-1 mr-3"></i>
+                                <span>隐藏表示空间：引入额外的隐藏层，增强特征表达能力</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-mha mt-1 mr-3"></i>
+                                <span>多尺度注意力：同时关注不同粒度的信息</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-mha mt-1 mr-3"></i>
+                                <span>门控机制：自适应地控制信息流</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-mha mt-1 mr-3"></i>
+                                <span>参数共享：减少参数量，提高训练效率</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-neutral p-4 rounded-lg text-sm mb-6">
+                        <pre class="text-dark/80">import torch
+import torch.nn as nn
+
+class MHAAttention(nn.Module):
+    def __init__(self, dim, num_heads, hidden_dim):
+        super().__init__()
+        self.num_heads = num_heads
+        self.head_dim = dim // num_heads
+        
+        # QKV投影
+        self.q_proj = nn.Linear(dim, dim)
+        self.k_proj = nn.Linear(dim, dim)
+        self.v_proj = nn.Linear(dim, dim)
+        
+        # 隐藏层投影
+        self.h_proj = nn.Linear(dim, hidden_dim)
+        self.o_proj = nn.Linear(hidden_dim, dim)
+        
+        # 门控机制
+        self.gate = nn.Sequential(
+            nn.Linear(dim, dim),
+            nn.Sigmoid()
+        )
+        
+    def forward(self, x):
+        batch_size, seq_len, _ = x.size()
+        
+        # 计算QKV
+        q = self.q_proj(x).view(batch_size, seq_len, self.num_heads, self.head_dim).transpose(1, 2)
+        k = self.k_proj(x).view(batch_size, seq_len, self.num_heads, self.head_dim).transpose(1, 2)
+        v = self.v_proj(x).view(batch_size, seq_len, self.num_heads, self.head_dim).transpose(1, 2)
+        
+        # 注意力计算
+        attn_scores = torch.matmul(q, k.transpose(-2, -1)) / (self.head_dim ** 0.5)
+        attn_weights = torch.softmax(attn_scores, dim=-1)
+        context = torch.matmul(attn_weights, v)
+        
+        # 合并多头
+        context = context.transpose(1, 2).reshape(batch_size, seq_len, -1)
+        
+        # 通过隐藏层
+        hidden = self.h_proj(context)
+        
+        # 门控机制
+        gate_value = self.gate(x)
+        output = self.o_proj(hidden) * gate_value
+        
+        return output</pre>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-neutral p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-mha mb-1">1.2-1.5x</div>
+                            <div class="text-sm text-dark/70">表达能力</div>
+                        </div>
+                        <div class="bg-neutral p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-mha mb-1">30-50%</div>
+                            <div class="text-sm text-dark/70">参数减少</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- 优化对比 -->
@@ -598,12 +721,19 @@ class GatedMLP(nn.Module):
                                 <td class="py-4 px-4">可变</td>
                                 <td class="py-4 px-4">部署优化，边缘设备</td>
                             </tr>
-                            <tr class="hover:bg-neutral/50">
+                            <tr class="border-b border-gray-100 hover:bg-neutral/50">
                                 <td class="py-4 px-4">Gated MLP</td>
                                 <td class="py-4 px-4 text-secondary font-medium">1.2-1.5x</td>
                                 <td class="py-4 px-4 text-secondary font-medium">1.1-1.3x</td>
                                 <td class="py-4 px-4">通常提升</td>
                                 <td class="py-4 px-4">所有规模模型</td>
+                            </tr>
+                            <tr class="hover:bg-neutral/50">
+                                <td class="py-4 px-4">MHA (多头隐注意力)</td>
+                                <td class="py-4 px-4 text-mha font-medium">0.9-1.1x</td>
+                                <td class="py-4 px-4 text-mha font-medium">1.3-1.5x</td>
+                                <td class="py-4 px-4">显著提升</td>
+                                <td class="py-4 px-4">需要高表达能力的任务</td>
                             </tr>
                         </tbody>
                     </table>
@@ -709,4 +839,256 @@ class GatedMLP(nn.Module):
                             <h3 class="text-xl font-semibold">音频处理</h3>
                         </div>
                         <p class="text-dark/70 mb-4">
-                            在音频领域，注意力机制被用于语音识别、语音合成、音乐生成、环境声音分类等任务。Transformers
+                            在音频领域，注意力机制被用于语音识别、语音合成、音乐生成、环境声音分类等任务。Transformers在音频处理中的应用正在快速发展，展现出良好的前景。
+                        </p>
+                        <ul class="space-y-2 text-dark/70 mb-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
+                                <span>语音识别（如Whisper）</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
+                                <span>音乐生成（如Jukebox）</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
+                                <span>音频分类（如AST）</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-block text-accent font-medium hover:underline">
+                            了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 应用4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/119/800/500" alt="多模态学习应用" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-mha/10 flex items-center justify-center mr-3">
+                                <i class="fa fa-object-group text-mha"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">多模态学习</h3>
+                        </div>
+                        <p class="text-dark/70 mb-4">
+                            注意力机制在多模态学习中扮演重要角色，能够有效地融合文本、图像、音频等不同模态的信息。这推动了跨模态检索、视觉问答、图像描述等任务的发展。
+                        </p>
+                        <ul class="space-y-2 text-dark/70 mb-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-mha mt-1 mr-2"></i>
+                                <span>视觉问答（如ViLT）</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-mha mt-1 mr-2"></i>
+                                <span>图像描述（如BLIP）</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-mha mt-1 mr-2"></i>
+                                <span>跨模态检索（如CLIP）</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-block text-mha font-medium hover:underline">
+                            了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 应用5 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/239/800/500" alt="推荐系统应用" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                <i class="fa fa-thumbs-up text-primary"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">推荐系统</h3>
+                        </div>
+                        <p class="text-dark/70 mb-4">
+                            注意力机制在推荐系统中的应用越来越广泛，能够捕捉用户行为序列中的长距离依赖关系，提高推荐的准确性和个性化程度。基于注意力的推荐模型在电商、社交媒体等领域取得了良好效果。
+                        </p>
+                        <ul class="space-y-2 text-dark/70 mb-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span>序列推荐（如SASRec）</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span>多兴趣推荐（如MIND）</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span>点击率预测（如DeepFM）</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-block text-primary font-medium hover:underline">
+                            了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 应用6 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/225/800/500" alt="科学计算应用" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center mr-3">
+                                <i class="fa fa-flask text-secondary"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">科学计算</h3>
+                        </div>
+                        <p class="text-dark/70 mb-4">
+                            注意力机制在科学计算领域的应用包括分子结构预测、蛋白质折叠、气候模型等。注意力网络能够有效地建模复杂的相互作用关系，为科学研究提供了强大的工具。
+                        </p>
+                        <ul class="space-y-2 text-dark/70 mb-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                                <span>蛋白质结构预测（如AlphaFold）</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                                <span>分子特性预测（如Graph Transformer）</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
+                                <span>气候建模（如ClimateGPT）</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-block text-secondary font-medium hover:underline">
+                            了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学习资源 -->
+    <section id="resources" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                    学习资源
+                </span>
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-6">深入了解注意力机制</h2>
+                <p class="text-lg text-dark/70">
+                    探索这些资源，进一步了解注意力机制的理论和实践
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 资源1 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <i class="fa fa-book text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Attention Is All You Need</h3>
+                    <p class="text-dark/70 mb-4">
+                        原始Transformer论文，介绍了注意力机制的基本原理和Transformer架构，是理解注意力机制的必读文献。
+                    </p>
+                    <div class="flex items-center text-sm text-dark/60 mb-4">
+                        <span class="mr-4"><i class="fa fa-calendar mr-1"></i> 2017</span>
+                        <span><i class="fa fa-file-text-o mr-1"></i> 论文</span>
+                    </div>
+                    <a href="https://arxiv.org/abs/1706.03762" target="_blank" class="inline-block text-primary font-medium hover:underline">
+                        阅读论文 <i class="fa fa-external-link ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- 资源2 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                        <i class="fa fa-book text-secondary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness</h3>
+                    <p class="text-dark/70 mb-4">
+                        FlashAttention的原始论文，详细介绍了这种高效注意力机制的设计原理和实现方法。
+                    </p>
+                    <div class="flex items-center text-sm text-dark/60 mb-4">
+                        <span class="mr-4"><i class="fa fa-calendar mr-1"></i> 2022</span>
+                        <span><i class="fa fa-file-text-o mr-1"></i> 论文</span>
+                    </div>
+                    <a href="https://arxiv.org/abs/2205.14135" target="_blank" class="inline-block text-secondary font-medium hover:underline">
+                        阅读论文 <i class="fa fa-external-link ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- 资源3 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-12 h-12 rounded-full bg-mha/10 flex items-center justify-center mb-4">
+                        <i class="fa fa-book text-mha text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">DeepSeek: Advancing Language Models with Multihead Hidden Attention</h3>
+                    <p class="text-dark/70 mb-4">
+                        介绍DeepSeek模型和多头隐注意力机制的论文，详细阐述了MHA的设计思路和实验结果。
+                    </p>
+                    <div class="flex items-center text-sm text-dark/60 mb-4">
+                        <span class="mr-4"><i class="fa fa-calendar mr-1"></i> 2023</span>
+                        <span><i class="fa fa-file-text-o mr-1"></i> 论文</span>
+                    </div>
+                    <a href="#" target="_blank" class="inline-block text-mha font-medium hover:underline">
+                        阅读论文 <i class="fa fa-external-link ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- 资源4 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                        <i class="fa fa-code text-accent text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Hugging Face Transformers</h3>
+                    <p class="text-dark/70 mb-4">
+                        Hugging Face的Transformers库，提供了各种预训练模型和注意力机制的实现，是NLP和注意力机制实践的重要工具。
+                    </p>
+                    <div class="flex items-center text-sm text-dark/60 mb-4">
+                        <span class="mr-4"><i class="fa fa-code mr-1"></i> 开源库</span>
+                        <span><i class="fa fa-github mr-1"></i> GitHub</span>
+                    </div>
+                    <a href="https://github.com/huggingface/transformers" target="_blank" class="inline-block text-accent font-medium hover:underline">
+                        查看项目 <i class="fa fa-external-link ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- 资源5 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <i class="fa fa-youtube-play text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">The Illustrated Transformer</h3>
+                    <p class="text-dark/70 mb-4">
+                        Jay Alammar的博客文章，用可视化的方式详细解释了Transformer模型和注意力机制，非常适合初学者。
+                    </p>
+                    <div class="flex items-center text-sm text-dark/60 mb-4">
+                        <span class="mr-4"><i class="fa fa-globe mr-1"></i> 博客</span>
+                        <span><i class="fa fa-language mr-1"></i> 英文</span>
+                    </div>
+                    <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" class="inline-block text-primary font-medium hover:underline">
+                        阅读文章 <i class="fa fa-external-link ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- 资源6 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                        <i class="fa fa-graduation-cap text-secondary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">CS224N: Natural Language Processing with Deep Learning</h3>
+                    <p class="text-dark/70 mb-4">
+                        Stanford的自然语言处理课程，包含了注意力机制和Transformer的详细讲解，是学习NLP和注意力机制的优质资源。
+                    </p>
+                    <div class="flex items-center text-sm text-dark/60 mb-4">
+                        <span class="mr-4"><i class="fa fa-graduation-cap mr-1"></i> 课程</span>
+                        <span><i class="fa fa-university mr-1"></i> Stanford</span>
+                    </div>
+                    <a href="https://web.stanford.edu/class/cs224n/" target="_blank" class="inline-block text-secondary font-medium hover:underline">
+                        查看课程 <i class="fa fa-external-link ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        
