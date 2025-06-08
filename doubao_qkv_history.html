@@ -65,6 +65,7 @@
                 <a href="#overview" class="font-medium text-dark/80 hover:text-primary transition-colors">概述</a>
                 <a href="#timeline" class="font-medium text-dark/80 hover:text-primary transition-colors">历史时间线</a>
                 <a href="#components" class="font-medium text-dark/80 hover:text-primary transition-colors">QKV组件</a>
+                <a href="#optimizations" class="font-medium text-dark/80 hover:text-primary transition-colors">优化技术</a>
                 <a href="#applications" class="font-medium text-dark/80 hover:text-primary transition-colors">应用场景</a>
                 <a href="#resources" class="font-medium text-dark/80 hover:text-primary transition-colors">学习资源</a>
                 <button class="bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
@@ -88,7 +89,7 @@
                     注意力机制<span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">QKV</span>的历史演进
                 </h1>
                 <p class="text-lg text-dark/70 mb-8 max-w-3xl mx-auto">
-                    探索从早期理论到Transformer的发展历程，了解Query、Key和Value如何重塑AI领域
+                    探索从早期理论到Transformer的发展历程，了解Query、Key和Value如何重塑AI领域，以及最新的优化技术如何提升其效率
                 </p>
                 <div class="flex flex-wrap justify-center gap-4">
                     <button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
@@ -118,12 +119,12 @@
                                 <h3 class="text-xl font-semibold mb-2">500+论文</h3>
                                 <p class="text-dark/70">关于注意力机制的研究文献</p>
                             </div>
-                            <div class="flex flex-col items-center text-center p-6 rounded-xl bg-neutral">
-                                <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-                                    <i class="fa fa-rocket text-accent text-2xl"></i>
+                            <div class="flex flex-col items-center text-center p-6 rounded-xl bg-accent/10">
+                                <div class="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-4">
+                                    <i class="fa fa-bolt text-accent text-2xl"></i>
                                 </div>
-                                <h3 class="text-xl font-semibold mb-2">100+应用</h3>
-                                <p class="text-dark/70">跨领域的实际应用案例</p>
+                                <h3 class="text-xl font-semibold mb-2">10+优化</h3>
+                                <p class="text-dark/70">从FlashAttention到MLP的效率提升</p>
                             </div>
                         </div>
                     </div>
@@ -368,27 +369,54 @@
                 </div>
                 
                 <!-- 时间点6 -->
+                <div class="mb-12 ml-16 relative">
+                    <div class="timeline-dot" style="top: 10px;"></div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 card-hover">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold">2020年：长序列注意力</h3>
+                            <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mt-2 md:mt-0">
+                                扩展与优化
+                            </span>
+                        </div>
+                        <p class="text-dark/70 mb-4">
+                            随着模型规模和输入序列长度的增加，处理长序列的效率成为挑战。研究人员提出了多种长序列注意力机制，如Longformer、Reformer等，通过稀疏注意力或递归机制减少计算复杂度。
+                        </p>
+                        <div class="flex flex-wrap gap-3 mt-4">
+                            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-dark/70">
+                                长序列注意力
+                            </span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-dark/70">
+                                Longformer
+                            </span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-dark/70">
+                                Reformer
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 时间点7 -->
                 <div class="ml-16 relative">
                     <div class="timeline-dot" style="top: 10px;"></div>
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 card-hover">
                         <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                            <h3 class="text-xl font-semibold">2020年至今：扩展与优化</h3>
-                            <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mt-2 md:mt-0">
-                                当前趋势
+                            <h3 class="text-xl font-semibold">2022年：FlashAttention</h3>
+                            <span class="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mt-2 md:mt-0">
+                                效率革命
                             </span>
                         </div>
                         <p class="text-dark/70 mb-4">
-                            注意力机制不断扩展和优化，如Longformer处理超长文本，Perceiver处理任意模态输入，以及GPT-3、PaLM等大型语言模型的出现，进一步证明了注意力机制的强大能力和广泛适用性。
+                            Dao等人提出FlashAttention，通过重新组织注意力计算的内存访问模式，显著减少了内存访问成本，大幅提高了注意力机制的计算效率。这使得训练和部署大型模型变得更加可行。
                         </p>
                         <div class="flex flex-wrap gap-3 mt-4">
                             <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-dark/70">
-                                大型语言模型
+                                FlashAttention
                             </span>
                             <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-dark/70">
-                                高效注意力机制
+                                内存访问优化
                             </span>
                             <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-dark/70">
-                                多模态学习
+                                高效注意力
                             </span>
                         </div>
                     </div>
@@ -397,172 +425,188 @@
         </div>
     </section>
 
-    <!-- 组件详解 -->
-    <section id="components" class="py-20 bg-white">
+    <!-- 优化技术 -->
+    <section id="optimizations" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center mb-16">
-                <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                    核心组件
+                <span class="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
+                    性能优化
                 </span>
-                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-6">QKV组件详解</h2>
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-6">注意力机制优化技术</h2>
                 <p class="text-lg text-dark/70">
-                    深入了解Query、Key和Value在注意力机制中的具体作用和实现方式
+                    随着模型规模和计算需求的增长，注意力机制的优化变得至关重要。探索最新的优化技术如何提升效率
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Query卡片 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-4 bg-primary"></div>
-                    <div class="p-6">
-                        <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                            <i class="fa fa-search text-primary text-2xl"></i>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- FlashAttention -->
+                <div class="bg-white rounded-xl shadow-xl p-8 card-hover">
+                    <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
+                        <i class="fa fa-bolt text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">FlashAttention</h3>
+                    <p class="text-dark/70 mb-6">
+                        FlashAttention是一种高效的注意力机制实现，通过重新组织计算流程和内存访问模式，显著减少了内存访问成本，从而提高了计算效率。与传统注意力相比，FlashAttention在保持相同精度的同时，速度提升了2-4倍，内存使用减少了5-10倍。
+                    </p>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-3">关键创新点</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-accent mt-1 mr-3"></i>
+                                <span>内存访问模式优化：通过tiling技术减少内存访问次数</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-accent mt-1 mr-3"></i>
+                                <span>融合算子：将多个注意力计算步骤融合为单个GPU内核</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-accent mt-1 mr-3"></i>
+                                <span>分块计算：将大型矩阵运算分解为更小的块，减少内存占用</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-accent mt-1 mr-3"></i>
+                                <span>数值稳定性：通过重新排序计算步骤提高数值稳定性</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-neutral p-4 rounded-lg text-sm mb-6">
+                        <pre class="text-dark/80">import torch
+import flash_attn
+
+# 使用FlashAttention的多头注意力
+output = flash_attn.flash_attn_qkvpacked_func(
+    qkv,        # 形状为 [batch_size, seq_len, 3, num_heads, head_dim]
+    dropout_p=0.1,
+    causal=False
+)</pre>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-neutral p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-accent mb-1">2-4x</div>
+                            <div class="text-sm text-dark/70">速度提升</div>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Query (查询)</h3>
-                        <p class="text-dark/70 mb-4">
-                            查询向量代表当前位置对其他位置的关注需求。它与键向量进行相似度计算，以确定应该关注序列中的哪些部分。
-                        </p>
-                        <div class="mb-4">
-                            <h4 class="font-medium mb-2">数学表示</h4>
-                            <div class="bg-neutral p-3 rounded-lg text-sm">
-                                <pre>Q = XW_q</pre>
-                                <p class="text-dark/60 mt-1">其中X是输入，W_q是可学习的权重矩阵</p>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-medium mb-2">关键特性</h4>
-                            <ul class="space-y-2 text-dark/70">
-                                <li class="flex items-start">
-                                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
-                                    <span>表示当前元素的"问题"</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
-                                    <span>与键向量进行点积运算</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
-                                    <span>维度通常为d_k</span>
-                                </li>
-                            </ul>
+                        <div class="bg-neutral p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-accent mb-1">5-10x</div>
+                            <div class="text-sm text-dark/70">内存节省</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Key卡片 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-4 bg-secondary"></div>
-                    <div class="p-6">
-                        <div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
-                            <i class="fa fa-key text-secondary text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Key (键)</h3>
-                        <p class="text-dark/70 mb-4">
-                            键向量代表输入序列中每个位置的特征。它们与查询向量进行比较，以计算注意力权重。
-                        </p>
-                        <div class="mb-4">
-                            <h4 class="font-medium mb-2">数学表示</h4>
-                            <div class="bg-neutral p-3 rounded-lg text-sm">
-                                <pre>K = XW_k</pre>
-                                <p class="text-dark/60 mt-1">其中X是输入，W_k是可学习的权重矩阵</p>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-medium mb-2">关键特性</h4>
-                            <ul class="space-y-2 text-dark/70">
-                                <li class="flex items-start">
-                                    <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
-                                    <span>表示每个元素的"特征"</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
-                                    <span>与查询向量进行点积，确定相关性</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
-                                    <span>维度通常为d_k</span>
-                                </li>
-                            </ul>
-                        </div>
+                <!-- MLP优化 -->
+                <div class="bg-white rounded-xl shadow-xl p-8 card-hover">
+                    <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+                        <i class="fa fa-cogs text-secondary text-2xl"></i>
                     </div>
-                </div>
-                
-                <!-- Value卡片 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-4 bg-accent"></div>
-                    <div class="p-6">
-                        <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-                            <i class="fa fa-database text-accent text-2xl"></i>
+                    <h3 class="text-xl font-semibold mb-4">MLP优化</h3>
+                    <p class="text-dark/70 mb-6">
+                        多层感知机(MLP)是Transformer模型中的另一个关键组件，负责处理注意力机制的输出。近年来，针对MLP的优化技术不断涌现，包括激活函数优化、稀疏性诱导和量化等，显著提高了模型效率。
+                    </p>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-3">关键优化技术</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Gated MLP：引入门控机制增强MLP的表达能力</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>稀疏MLP：通过稀疏激活减少计算量</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>量化MLP：降低参数精度以减少内存使用和加速计算</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>高效激活函数：如GELU、SwiGLU等</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-neutral p-4 rounded-lg text-sm mb-6">
+                        <pre class="text-dark/80">import torch
+import torch.nn as nn
+
+class GatedMLP(nn.Module):
+    def __init__(self, input_dim, hidden_dim):
+        super().__init__()
+        self.w1 = nn.Linear(input_dim, hidden_dim)
+        self.w2 = nn.Linear(input_dim, hidden_dim)
+        self.act = nn.GELU()
+        
+    def forward(self, x):
+        return self.act(self.w1(x)) * self.w2(x)</pre>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-neutral p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-secondary mb-1">60-80%</div>
+                            <div class="text-sm text-dark/70">计算减少</div>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Value (值)</h3>
-                        <p class="text-dark/70 mb-4">
-                            值向量包含输入序列中每个位置的信息。它们根据注意力权重进行加权组合，生成最终的输出。
-                        </p>
-                        <div class="mb-4">
-                            <h4 class="font-medium mb-2">数学表示</h4>
-                            <div class="bg-neutral p-3 rounded-lg text-sm">
-                                <pre>V = XW_v</pre>
-                                <p class="text-dark/60 mt-1">其中X是输入，W_v是可学习的权重矩阵</p>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-medium mb-2">关键特性</h4>
-                            <ul class="space-y-2 text-dark/70">
-                                <li class="flex items-start">
-                                    <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
-                                    <span>表示每个元素的"信息内容"</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
-                                    <span>根据注意力权重进行加权组合</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
-                                    <span>维度通常为d_v</span>
-                                </li>
-                            </ul>
+                        <div class="bg-neutral p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-secondary mb-1">2-3x</div>
+                            <div class="text-sm text-dark/70">推理加速</div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- 注意力计算可视化 -->
-            <div class="mt-20 bg-white rounded-xl shadow-xl p-8 md:p-12 card-hover">
-                <h3 class="text-xl font-semibold mb-8 text-center">注意力机制计算过程可视化</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="font-medium mb-4">自注意力机制示例</h4>
-                        <div class="relative h-[300px]">
-                            <img src="https://picsum.photos/id/180/600/400" alt="自注意力机制示意图" class="w-full h-full object-cover rounded-lg">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg flex items-end">
-                                <div class="p-6">
-                                    <p class="text-white font-medium">输入序列通过线性变换生成Q、K、V</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <p class="text-dark/70">
-                                自注意力机制允许模型关注序列中的不同位置，计算它们之间的关系。每个位置的Query向量与所有位置的Key向量进行点积，生成注意力得分，然后通过softmax函数归一化，最后与Value向量加权组合。
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="font-medium mb-4">多头注意力机制</h4>
-                        <div class="relative h-[300px]">
-                            <img src="https://picsum.photos/id/1/600/400" alt="多头注意力机制示意图" class="w-full h-full object-cover rounded-lg">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg flex items-end">
-                                <div class="p-6">
-                                    <p class="text-white font-medium">多头注意力并行执行多个注意力计算</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <p class="text-dark/70">
-                                多头注意力机制将Query、Key和Value投影到多个子空间，并行执行注意力计算，然后将结果拼接并投影回原始维度。这种方法允许模型从不同的表示子空间捕获信息。
-                            </p>
-                        </div>
-                    </div>
+            <!-- 优化对比 -->
+            <div class="mt-16 bg-white rounded-xl shadow-xl p-8 md:p-12 card-hover">
+                <h3 class="text-xl font-semibold mb-8 text-center">优化技术对比</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[600px]">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-left py-4 px-4 font-semibold">技术</th>
+                                <th class="text-left py-4 px-4 font-semibold">速度提升</th>
+                                <th class="text-left py-4 px-4 font-semibold">内存节省</th>
+                                <th class="text-left py-4 px-4 font-semibold">精度影响</th>
+                                <th class="text-left py-4 px-4 font-semibold">适用场景</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100 hover:bg-neutral/50">
+                                <td class="py-4 px-4">标准注意力</td>
+                                <td class="py-4 px-4">1x</td>
+                                <td class="py-4 px-4">1x</td>
+                                <td class="py-4 px-4">无</td>
+                                <td class="py-4 px-4">小规模模型，短序列</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-neutral/50">
+                                <td class="py-4 px-4">FlashAttention</td>
+                                <td class="py-4 px-4 text-accent font-medium">2-4x</td>
+                                <td class="py-4 px-4 text-accent font-medium">5-10x</td>
+                                <td class="py-4 px-4">可忽略</td>
+                                <td class="py-4 px-4">所有规模模型，所有序列长度</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-neutral/50">
+                                <td class="py-4 px-4">稀疏注意力</td>
+                                <td class="py-4 px-4 text-secondary font-medium">3-8x</td>
+                                <td class="py-4 px-4 text-secondary font-medium">3-8x</td>
+                                <td class="py-4 px-4">轻微</td>
+                                <td class="py-4 px-4">长序列任务</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-neutral/50">
+                                <td class="py-4 px-4">量化注意力</td>
+                                <td class="py-4 px-4 text-primary font-medium">2-3x</td>
+                                <td class="py-4 px-4 text-primary font-medium">2-4x</td>
+                                <td class="py-4 px-4">可变</td>
+                                <td class="py-4 px-4">部署优化，边缘设备</td>
+                            </tr>
+                            <tr class="hover:bg-neutral/50">
+                                <td class="py-4 px-4">Gated MLP</td>
+                                <td class="py-4 px-4 text-secondary font-medium">1.2-1.5x</td>
+                                <td class="py-4 px-4 text-secondary font-medium">1.1-1.3x</td>
+                                <td class="py-4 px-4">通常提升</td>
+                                <td class="py-4 px-4">所有规模模型</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -665,247 +709,4 @@
                             <h3 class="text-xl font-semibold">音频处理</h3>
                         </div>
                         <p class="text-dark/70 mb-4">
-                            在音频领域，注意力机制被用于语音识别、语音合成、音乐生成、环境声音分类等任务。Transformers能够捕捉音频信号中的长时依赖关系，提高了音频处理的性能。
-                        </p>
-                        <ul class="space-y-2 text-dark/70 mb-4">
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
-                                <span>自动语音识别（如Wav2Vec 2.0）</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
-                                <span>语音合成（如Tacotron 2）</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
-                                <span>音乐生成（如Jukebox）</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="inline-block text-accent font-medium hover:underline">
-                            了解更多 <i class="fa fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 应用4 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://picsum.photos/id/160/800/500" alt="多模态学习应用" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-                                <i class="fa fa-object-group text-primary"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold">多模态学习</h3>
-                        </div>
-                        <p class="text-dark/70 mb-4">
-                            注意力机制在多模态学习中扮演重要角色，使模型能够理解和关联不同类型的数据，如图像、文本、音频等。这推动了图像描述、视觉问答、跨模态检索等领域的发展。
-                        </p>
-                        <ul class="space-y-2 text-dark/70 mb-4">
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
-                                <span>图像描述（如BLIP、Florence）</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
-                                <span>视觉问答（如ViLBERT、LXMERT）</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
-                                <span>跨模态检索（如CLIP）</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="inline-block text-primary font-medium hover:underline">
-                            了解更多 <i class="fa fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 应用5 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://picsum.photos/id/239/800/500" alt="强化学习应用" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center mr-3">
-                                <i class="fa fa-gamepad text-secondary"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold">强化学习</h3>
-                        </div>
-                        <p class="text-dark/70 mb-4">
-                            在强化学习中，注意力机制帮助智能体关注环境中的重要特征，提高决策效率。这在复杂环境中尤为重要，如自动驾驶、机器人控制和游戏等领域。
-                        </p>
-                        <ul class="space-y-2 text-dark/70 mb-4">
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
-                                <span>决策优化（如Attention-based DQN）</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
-                                <span>机器人控制（如基于注意力的策略网络）</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
-                                <span>多智能体系统（如CommNet）</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="inline-block text-secondary font-medium hover:underline">
-                            了解更多 <i class="fa fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 应用6 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://picsum.photos/id/192/800/500" alt="时间序列预测应用" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center mr-3">
-                                <i class="fa fa-line-chart text-accent"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold">时间序列预测</h3>
-                        </div>
-                        <p class="text-dark/70 mb-4">
-                            注意力机制在时间序列预测中表现出色，能够捕捉序列中的长时依赖关系和重要模式。这在金融预测、天气预测、能源消耗预测等领域有广泛应用。
-                        </p>
-                        <ul class="space-y-2 text-dark/70 mb-4">
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
-                                <span>股票价格预测</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
-                                <span>能源消耗预测</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
-                                <span>医疗时间序列分析</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="inline-block text-accent font-medium hover:underline">
-                            了解更多 <i class="fa fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 学习资源 -->
-    <section id="resources" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto text-center mb-16">
-                <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                    学习资料
-                </span>
-                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-6">注意力机制学习资源</h2>
-                <p class="text-lg text-dark/70">
-                    探索这些精选资源，深入了解注意力机制的理论和实践
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- 论文 -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-6 flex items-center">
-                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-                            <i class="fa fa-file-text-o text-primary"></i>
-                        </div>
-                        经典论文
-                    </h3>
-                    
-                    <div class="space-y-6">
-                        <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
-                            <h4 class="font-semibold mb-2">Attention Is All You Need</h4>
-                            <p class="text-sm text-dark/60 mb-3">Vaswani et al., 2017</p>
-                            <p class="text-dark/70 mb-4">
-                                这篇论文首次提出Transformer模型和自注意力机制，是注意力机制发展史上的里程碑。
-                            </p>
-                            <div class="flex items-center">
-                                <a href="#" class="text-primary text-sm font-medium hover:underline">
-                                    <i class="fa fa-external-link mr-1"></i> 查看论文
-                                </a>
-                                <span class="mx-3 text-dark/30">|</span>
-                                <span class="text-dark/60 text-sm">
-                                    <i class="fa fa-star text-yellow-400 mr-1"></i> 引用次数: 37,000+
-                                </span>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
-                            <h4 class="font-semibold mb-2">Neural Machine Translation by Jointly Learning to Align and Translate</h4>
-                            <p class="text-sm text-dark/60 mb-3">Bahdanau et al., 2014</p>
-                            <p class="text-dark/70 mb-4">
-                                这篇论文首次提出注意力机制在机器翻译中的应用，为后续研究奠定了基础。
-                            </p>
-                            <div class="flex items-center">
-                                <a href="#" class="text-primary text-sm font-medium hover:underline">
-                                    <i class="fa fa-external-link mr-1"></i> 查看论文
-                                </a>
-                                <span class="mx-3 text-dark/30">|</span>
-                                <span class="text-dark/60 text-sm">
-                                    <i class="fa fa-star text-yellow-400 mr-1"></i> 引用次数: 25,000+
-                                </span>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
-                            <h4 class="font-semibold mb-2">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</h4>
-                            <p class="text-sm text-dark/60 mb-3">Devlin et al., 2018</p>
-                            <p class="text-dark/70 mb-4">
-                                这篇论文提出BERT模型，展示了基于Transformer的预训练方法在NLP任务中的强大性能。
-                            </p>
-                            <div class="flex items-center">
-                                <a href="#" class="text-primary text-sm font-medium hover:underline">
-                                    <i class="fa fa-external-link mr-1"></i> 查看论文
-                                </a>
-                                <span class="mx-3 text-dark/30">|</span>
-                                <span class="text-dark/60 text-sm">
-                                    <i class="fa fa-star text-yellow-400 mr-1"></i> 引用次数: 33,000+
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 教程 -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-6 flex items-center">
-                        <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center mr-3">
-                            <i class="fa fa-graduation-cap text-secondary"></i>
-                        </div>
-                        学习教程
-                    </h3>
-                    
-                    <div class="space-y-6">
-                        <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
-                            <h4 class="font-semibold mb-2">Attention Mechanism Explained</h4>
-                            <p class="text-sm text-dark/60 mb-3">Medium Blog Post</p>
-                            <p class="text-dark/70 mb-4">
-                                这篇博客文章详细解释了注意力机制的原理、数学公式和实现细节，适合初学者。
-                            </p>
-                            <div class="flex items-center">
-                                <a href="#" class="text-secondary text-sm font-medium hover:underline">
-                                    <i class="fa fa-external-link mr-1"></i> 阅读教程
-                                </a>
-                                <span class="mx-3 text-dark/30">|</span>
-                                <span class="text-dark/60 text-sm">
-                                    <i class="fa fa-eye mr-1"></i> 阅读量: 150,000+
-                                </span>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
-                            <h4 class="font-semibold mb-2">Transformers from Scratch</h4>
-                            <p class="text-sm text-dark/60 mb-3">YouTube Tutorial</p>
-                            <p class="text-dark/70 mb-4">
-                                这个视频教程从零开始实现Transformer模型，包括注意力机制的详细讲解和代码实现。
-                            </p>
-                            <div class="flex items-center">
-                                <a href="#" class="text-secondary text-sm font-medium hover:underline">
-                                    <i class="fa fa-external-link mr-1"></i> 观看视频
-                                </a>
+                            在音频领域，注意力机制被用于语音识别、语音合成、音乐生成、环境声音分类等任务。Transformers
