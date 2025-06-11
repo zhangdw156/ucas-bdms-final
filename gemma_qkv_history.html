@@ -19,6 +19,13 @@
         .important {
             font-weight: bold;
         }
+        a {
+            color: #007bff; /* 蓝色链接 */
+            text-decoration: none; /* 移除下划线 */
+        }
+        a:hover {
+            text-decoration: underline; /* 鼠标悬停时显示下划线 */
+        }
     </style>
 </head>
 <body>
@@ -38,7 +45,7 @@
             <li>**上下文向量：**  在每个解码步骤，计算一个上下文向量，该向量是输入序列所有隐藏状态的加权和。</li>
             <li>**对齐分数：**  使用一个对齐模型来计算每个输入隐藏状态与当前解码器隐藏状态的相关性，这些相关性作为权重。</li>
         </ul>
-        <p>Bahdanau 注意力机制的权重计算可以看作是 Query (解码器隐藏状态) 与 Key (编码器隐藏状态) 之间的相似度计算，而 Value (编码器隐藏状态) 则被加权求和以生成上下文向量。</p>
+        <p>可以参考论文：<a href="https://arxiv.org/abs/1409.3215">Neural Machine Translation by Jointly Learning to Align and Translate</a></p>
     </div>
 
     <div class="section">
@@ -49,18 +56,17 @@
             <li>**General：**  使用一个权重矩阵将 Key 投影到与 Query 相同的空间，然后计算点积。</li>
             <li>**Concat：**  将 Query 和 Key 连接起来，然后通过一个神经网络进行计算。</li>
         </ul>
-        <p>Luong 注意力机制同样体现了 QKV 的思想，Query 来自解码器，Key 和 Value 来自编码器。</p>
+        <p>可以参考论文：<a href="https://arxiv.org/abs/1508.04022">Effective Approaches to Attention-based Neural Machine Translation</a></p>
     </div>
 
     <div class="section">
         <h2>Self-Attention 和 Transformer (2017)</h2>
-        <p>真正的突破发生在 <span class="important">2017 年</span>，Vaswani 等人提出了 <a href="https://arxiv.org/abs/1706.03762">Transformer</a> 模型，并引入了 <span class="important">Self-Attention</span> 机制。这是 QKV 概念真正成型的关键时刻。</p>
+        <p>真正的突破发生在 <span class="important">2017 年</span>，Vaswani 等人提出了 <a href="https://arxiv.org/abs/1706.03762">Attention is All You Need</a> 模型，并引入了 <span class="important">Self-Attention</span> 机制。这是 QKV 概念真正成型的关键时刻。</p>
         <ul>
             <li>**Self-Attention：**  允许模型关注输入序列内部的不同部分，而无需依赖编码器-解码器结构。</li>
             <li>**QKV 的明确定义：**  在 Self-Attention 中，Query、Key 和 Value 都来自同一个输入序列。输入序列通过三个不同的线性变换，分别得到 Q、K 和 V。</li>
             <li>**Scaled Dot-Product Attention：**  Transformer 使用缩放点积注意力，计算 Query 和 Key 之间的相似度，然后使用 softmax 函数进行归一化，最后将归一化的权重应用于 Value。</li>
         </ul>
-        <p>Transformer 的成功极大地推动了 NLP 领域的发展，Self-Attention 机制也成为了许多后续模型的基础。</p>
     </div>
 
     <div class="section">
@@ -68,8 +74,8 @@
         <p>自 Transformer 提出以来，QKV 机制不断发展和改进：</p>
         <ul>
             <li>**Multi-Head Attention：**  Transformer 使用多头注意力，即并行地进行多次 QKV 计算，然后将结果拼接起来，以捕捉输入序列的不同方面的信息。</li>
-            <li>**Sparse Attention：**  为了减少计算复杂度，研究人员提出了各种稀疏注意力机制，例如 Longformer 和 Reformer。</li>
-            <li>**Linear Attention：**  进一步降低计算复杂度，例如 Linformer 和 Performer。</li>
+            <li>**Sparse Attention：**  为了减少计算复杂度，研究人员提出了各种稀疏注意力机制，例如 <a href="https://arxiv.org/abs/2004.05150">Longformer</a> 和 <a href="https://arxiv.org/abs/2001.04451">Reformer</a>。</li>
+            <li>**Linear Attention：**  进一步降低计算复杂度，例如 <a href="https://arxiv.org/abs/2103.16539">Linformer</a> 和 <a href="https://arxiv.org/abs/2010.14860">Performer</a>。</li>
             <li>**各种变体：**  QKV 机制也被应用于图像处理、语音识别等其他领域，并衍生出各种变体。</li>
         </ul>
     </div>
